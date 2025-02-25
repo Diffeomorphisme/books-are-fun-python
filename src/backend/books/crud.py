@@ -1,9 +1,11 @@
+import uuid
+
 from sqlalchemy.orm import Session
 from src.backend.books.schema import BookModel
 from src.backend.core.utils import logger
 
 
-def get_book_from_id(book_id: str, db: Session) -> BookModel | None:
+def get_book_from_id(book_id: uuid.UUID, db: Session) -> BookModel | None:
     return db.query(BookModel).filter(BookModel.id == book_id).first()
 
 
@@ -27,13 +29,12 @@ def update_book_with_id(
         book_to_update.id = existing_book.id
         db.merge(book_to_update)
         db.commit()
-        db.refresh(book_to_update)
         return book_to_update
     else:
         logger.error("Book not found")
 
 
-def delete_book_with_id(book_id: str, db: Session):
+def delete_book_with_id(book_id: uuid.UUID, db: Session):
     existing_book = get_book_from_id(book_id, db)
     if existing_book:
         db.delete(existing_book)

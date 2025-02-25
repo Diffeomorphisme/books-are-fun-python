@@ -11,6 +11,14 @@ class BookModel(Base):
     id = Column(UUID, primary_key=True, default=uuid.uuid4)
     title = Column(String, nullable=False)
 
+    def as_dict(self):
+        return {'id': self.id, 'title': self.title}
+
 
 class BookToUpdate(BaseModel):
+    title: str
+
+
+class Book(BaseModel):
+    id: uuid.UUID
     title: str

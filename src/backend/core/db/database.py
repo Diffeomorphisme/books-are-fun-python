@@ -1,22 +1,15 @@
 from sqlalchemy.exc import ArgumentError
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from urllib.parse import quote
 
-from src.backend.core import settings
 
 try:
-    if 'QUOTE_PW' in settings.DB_CONNECTION_STRING:
-        db_string = settings.DB_CONNECTION_STRING.format_map(
-            {'QUOTE_PW': quote(settings.QUOTE_PW)}
-        )
-    else:
-        db_string = settings.DB_CONNECTION_STRING
+
+    db_string = "postgresql://testuser:testpwd@db:5432/testdb"
 
     engine = create_engine(
         db_string,
         pool_pre_ping=True,
-        # connect_args={"check_same_thread": False},  # only for sqlite
         echo=False
     )
 except ArgumentError:
