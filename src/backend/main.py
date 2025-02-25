@@ -3,17 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.backend.routes import api_router
 
-
-app = FastAPI(
-    title="Books Are Fun Python",
-)
-app.include_router(api_router)
-
 origins = [
     "http://localhost:1234",
     "https://127.0.0.1:1234",
     "http://0.0.0.0:1234",
 ]
+
+app = FastAPI(
+    title="Books Are Fun Python",
+)
+app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,

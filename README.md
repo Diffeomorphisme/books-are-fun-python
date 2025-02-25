@@ -1,34 +1,25 @@
-# python-project-template
-A Template Repository to kickstart your Python project
+# books-are-fun-python
+Why not in Python as well?
 
-## Features
-Includes:
-- A GitHub CI workflow that lints and tests the code, as well as runs an installation check
-- A setup for dealing with secrets either locally with a `.env` file or from the environment (test / prod)  
-
-## In practice
-### Installing the project
-
-Install uv 
-
-run `curl -LsSf https://astral.sh/uv/install.sh | sh`
-(alternatives can be found here: https://docs.astral.sh/uv/getting-started/installation/)
+The project is divided into two parts:
+- a backend, which consists of:
+  - the API (consumed by the frontend)
+  - the database, with its schema and repositories (used by certain calls to the API)
+- a frontend, which interacts with the API to display a list of books
 
 
-### Running the code locally
-- Create a `.env` file in the root of the folder, and populate it up with the project's secrets, as shown in the `env.example` file
-- The script to execute is app/main.py, and the working directory should be the root of the project
+## Running the project
 
-To run the project (installations run automatically): 
+### Docker
+From the root of the project, run:
+```bash
+docker compose up -d
+```
+The frontend is reachable [here](http://127.0.0.1:1234)
 
-run `uv run app/main.py`
 
+## To dos
 
-### Before pushing your code
-Make sure that your code is formatted properly by running the following commands:
-
-run `uv run ruff format` & `uv run ruff check --fix`
-
-Run the tests to make sure everything is performing as expected:
-
-run `uv run pytest tests`
+- For frontend/backend specific todo, refer to their respective READMEs.
+- Docker compose: introduce environment variables at this stage
+- Separate requirements for front-end and back-end to avoid useless installs
