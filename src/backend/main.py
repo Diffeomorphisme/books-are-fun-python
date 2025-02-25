@@ -22,6 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# To do - Protect API access behind authentication
 
 if __name__ == '__main__':
     import uvicorn

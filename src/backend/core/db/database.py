@@ -4,8 +4,8 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 
 try:
-
     db_string = "postgresql://testuser:testpwd@db:5432/testdb"
+    # To do: change hard-coded connection string to an environment variable
 
     engine = create_engine(
         db_string,

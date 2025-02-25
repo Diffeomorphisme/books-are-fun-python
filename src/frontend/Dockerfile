@@ -10,3 +10,5 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Run the application.
 CMD streamlit run --server.port 1234 --server.address 0.0.0.0 src/frontend/main.py
+
+# To do - optimise to minimise the size of the image
